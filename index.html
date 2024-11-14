@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>payer times</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Prayer Times</h1>
+      <h2 class="info"></h2>
+      <p class="date"></p>
+      <br />
+      <form onsubmit="return handleFormSearch(event)">
+        <div>
+          <select
+            name="country"
+            id="country"
+            onchange="addOptionToSelectCity()"
+          >
+            <option value="">Select Country</option>
+          </select>
+        </div>
+        <div>
+          <select name="city" id="city">
+            <option value="">Select City</option>
+          </select>
+        </div>
+
+        <button>Search</button>
+      </form>
+
+      <div class="container-card">
+        <!-- add the element by javaScript -->
+      </div>
+
+      <audio id="audio" src="call-to-prayer.mp3"></audio>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
