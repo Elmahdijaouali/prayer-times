@@ -393,7 +393,7 @@ function addOptionToSelectCity() {
   document.querySelector("#city").innerHTML = "";
   document.querySelector("#city").innerHTML +=
     " <option value='' >Select City </option>";
-  console.log(cities);
+  
   cities.map((c) => {
     document.querySelector("#city").innerHTML += `
         <option value="${c}">${c}</option>
@@ -417,18 +417,30 @@ function handleFormSearch(e) {
 // fetch data
 async function getTimesPayer(country, city) {
   document.querySelector(".container-card").innerHTML = "";
-
+  try {
   const res = await fetch(
     `https://api.aladhan.com/v1/timingsByCity/today?city=${city}&country=${country}`
   );
+   if (!res.ok) {
+      throw new Error("Failed to fetch prayer times.");
+    }
 
   const data = await res.json();
-
+    
+    if (data.code !== 200) {
+      throw new Error("Invalid data received from the API.");
+    }
   localStorage.setItem("timings", JSON.stringify(data.data.timings));
   localStorage.setItem(
     "info",
     JSON.stringify({ country: country, city: city })
   );
+  }catch(err){
+    console.error('Error',err)
+    document.querySelector(".container-card").innerHTML = `
+      <p>There was an error fetching prayer times. Please try again later.</p>
+    `;
+  }
 
   addInfoCountryAndCity();
 
@@ -460,11 +472,13 @@ readTimingsFromLocalStorage();
 
 // add inforamtion about prayer times country and city
 function addInfoCountryAndCity() {
-  const { country, city } = JSON.parse(localStorage.getItem("info"));
-
+  const info = JSON.parse(localStorage.getItem("info"));
+ if(info){
+   const {country , city} = info
   document.querySelector(".info").innerHTML = `
      Country is <span> ${country}</span>  ,And city is <span>${city}</span> 
   `;
+ }
 }
 addInfoCountryAndCity();
 
