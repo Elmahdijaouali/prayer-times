@@ -158,3 +158,39 @@ select {
     border-radius: 0.1em;
   }
 }
+
+
+@media (max-width:300px) {
+  .container{
+    padding-top: 1vh;
+    /* background: #333; */
+  }
+  h1{
+    font-size: 1em;
+  }
+  .container-card {
+    flex-direction: column;
+    width: 100%;
+    padding: 0% !important;
+  }
+  .card {
+    width: 90%;
+    margin:1em auto;
+  }
+  form {
+    width: 95%;
+  }
+  form select , form button {
+    font-size: .4em;
+  }
+  .info{
+    font-size: .6em;
+  }
+  .info span {
+    display: inline-block;
+    font-size: .6em;
+    background: grey;
+    padding: 0.1em 0.2em;
+    border-radius: 0.1em;
+  }
+}
