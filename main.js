@@ -419,7 +419,7 @@ async function getTimesPayer(country, city) {
   document.querySelector(".container-card").innerHTML = "";
 
   const res = await fetch(
-    `http://api.aladhan.com/v1/timingsByCity/today?city=${city}&country=${country}`
+    `https://api.aladhan.com/v1/timingsByCity/today?city=${city}&country=${country}`
   );
 
   const data = await res.json();
