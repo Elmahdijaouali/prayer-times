@@ -38,6 +38,10 @@ form select {
   outline: none;
   background: rgb(204, 201, 201);
   border: none;
+
+}
+select::-webkit-scrollbar {
+  display: none;
 }
 form #country {
   border-radius: 0.3em 0em 0em 0.3em;
